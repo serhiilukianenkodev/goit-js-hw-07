@@ -27,7 +27,7 @@ return gallery.map(({preview, original, description}) =>
 
 function onGalleryItemClick(evt){
     evt.preventDefault()
-    if(evt.target.nodeName !== 'IMG') return
+    if(evt.target.nodeName !== 'IMG') return;
     const largeImgRef = evt.target.dataset.source
 
     createModal(largeImgRef)
@@ -35,9 +35,7 @@ function onGalleryItemClick(evt){
 
 function createModal(url){
       const instance = basicLightbox.create(`
-    <div class="modal">
-      <img src=${url} style = 'width: auto; height: 70vh'>
-    </div>
+      <img src=${url} width="800" height="600">
 `)
 
 instance.show()
