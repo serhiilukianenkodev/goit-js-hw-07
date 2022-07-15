@@ -14,7 +14,7 @@ function createGalleryMarkup (gallery){
 return gallery.map(({preview, original, description}) => 
 `        
 <div class="gallery__item">
-  <a class="gallery__link" href="large-image.jpg">
+  <a class="gallery__link" href="${original}">
     <img
       class="gallery__image"
       src="${preview}"
@@ -27,16 +27,16 @@ return gallery.map(({preview, original, description}) =>
 
 function onGalleryItemClick(evt){
     evt.preventDefault()
+    if(evt.target.nodeName !== 'IMG') return
     const largeImgRef = evt.target.dataset.source
 
     createModal(largeImgRef)
-  
 }
 
 function createModal(url){
       const instance = basicLightbox.create(`
     <div class="modal">
-      <img src=${url} style = 'width: 70vw'>
+      <img src=${url} style = 'width: auto; height: 70vh'>
     </div>
 `)
 
