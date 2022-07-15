@@ -1,8 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// console.log(galleryItems);
-
 // Add gallery
 const galleryEl = document.querySelector('.gallery')
 const galleryMarkup = createGalleryMarkup(galleryItems)
@@ -31,5 +29,25 @@ function onGalleryItemClick(evt){
     evt.preventDefault()
     const largeImgRef = evt.target.dataset.source
 
-    console.log(largeImgRef);
+    createModal(largeImgRef)
+  
 }
+
+function createModal(url){
+      const instance = basicLightbox.create(`
+    <div class="modal">
+      <img src=${url} style = 'width: 70vw'>
+    </div>
+`)
+
+instance.show()
+document.addEventListener("keydown", onKeydown);
+  
+  function onKeydown( { key  }){
+        if (key === 'Escape'){
+        instance.close()
+        document.removeEventListener("keydown", onKeydown)
+        }
+  }
+}
+
