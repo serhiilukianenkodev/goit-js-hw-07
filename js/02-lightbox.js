@@ -19,8 +19,10 @@ let gallery = new SimpleLightbox('.gallery a', {
 
 function createGalleryMarkup (gallery){
 return gallery.map(({preview, original, description}) => 
-`        
-<a class="gallery__item" href="${original}">
+`
+<li class="gallery__item">        
+<a class="gallery__link" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
-</a> `).join('')
+</a>
+</li> `).join('')
 }
