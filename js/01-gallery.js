@@ -35,16 +35,16 @@ function onGalleryItemClick(evt){
 
 function createModal(url){
       const instance = basicLightbox.create(`
-      <img src=${url} width="800" height="600">
-`)
+      <img src=${url} width="800" height="600">`, 
+      {onShow: () => document.addEventListener("keydown", onKeydown), 
+      onClose: () => document.removeEventListener("keydown", onKeydown)}
+      )
 
 instance.show()
-document.addEventListener("keydown", onKeydown);
   
   function onKeydown( { key  }){
         if (key === 'Escape'){
         instance.close()
-        document.removeEventListener("keydown", onKeydown)
         }
   }
 }
